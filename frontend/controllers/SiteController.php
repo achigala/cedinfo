@@ -12,6 +12,8 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Teacher;
+use frontend\models\News;
 
 /**
  * Site controller
@@ -115,7 +117,9 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $teacher = Teacher::find()->one();
         $model = new ContactForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
@@ -127,6 +131,7 @@ class SiteController extends Controller
         } else {
             return $this->render('contact', [
                 'model' => $model,
+                'teacher' => $teacher,
             ]);
         }
     }
@@ -138,7 +143,11 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $news = new News();
+        $news = News::find()->all();
+        return $this->render('about',[
+            'news'=>$news,
+            ]);
     }
 
     /**

@@ -4,13 +4,38 @@
 
 use yii\helpers\Html;
 
-$this->title = 'About';
+$this->title = 'NEWS';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>This is the About page. You may modify the following file to customize its content:</p>
 
-    <code><?= __FILE__ ?></code>
+		<script type="text/javascript">
+			setInterval(function () {
+				$.get('/motion/readstatus.php', function (data) {
+					//var page = document.getElementById("page1");
+					if (data === "1") {
+
+
+						window.location.href = 'http://www.cedinfo.esy.es/';
+					}
+				});
+			}, 1000);
+</script>
+		
+
+
+
+<div id="maximage">
+    
+    <?php foreach ($news as $news): ?>
+    <img src="../../admin/uploads/news_upload/<?= $news->news_img ?>"width="1400" height="1050" >
+    <?php endforeach; ?>
+
 </div>
+
+<script>
+    $(function(){
+	// Trigger maximage
+	jQuery('#maximage').maximage();
+});
+</script>

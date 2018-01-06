@@ -1,53 +1,48 @@
 <?php
 
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'CED|Information';
+
+
 ?>
-<div class="site-index">
+<div id="particles" class="gradient">
+  <div id="intro" class="center">
+    
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+    <h1 class="home" style="border-bottom: 0px;">CED | Education</h1>
+    <p style="max-width:1000px; margin-bottom:50px;">The development Management Information System of Computer Education Department.</p>
+    <?php echo Html::a('Teacher', ['/teacher/index'], ['class'=>'btn','target'=>'_blank']);?>
+    <!-- <a href="#" class="btn">Teacher</a> -->
+    <?php echo Html::a('Schdule',['lab/index?teacher=0'],['class'=>'btn','target'=>'_blank']);?>
+    <?php echo Html::a('Room', ['/roomtype/index'], ['class'=>'btn','target'=>'_blank']);?>
+    <?php echo Html::a('Event', ['/event/index'], ['class'=>'btn','target'=>'_blank']);?>
+  </div>
 </div>
+
+	<script type="text/javascript">
+			setInterval(function () {
+				$.get('/motion/readstatus.php', function (data) {
+					//var page = document.getElementById("page1");
+					if (data === "1") {
+
+
+						window.location.href = 'http://www.cedinfo.esy.es/site/about';
+					}
+				});
+			}, 1000);
+		</script>
+
+
+
+
+
+
+      <script type="text/javascript">
+    $(document).ready(function() {
+        //alert("siuehfsf");
+        //window.location = "/teacher/index";
+    });
+</script>

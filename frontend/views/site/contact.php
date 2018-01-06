@@ -7,6 +7,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use frontend\models\Teacher;
+use yii\helpers\ArrayHelper;
 
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
@@ -23,8 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
                 <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                <!-- <?= $form->field($model, 'teacher_email')->textInput(['value' => $teacher->teacher_email])?> -->
 
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->dropdownList(
+                        ArrayHelper::map(Teacher::find()->all(),
+                        'teacher_email',
+                        'teacher_email',
+                        'fullname'),
+                        [
+                            'prompt'=>'Select email.......',
+                        ]); ?>
 
                 <?= $form->field($model, 'subject') ?>
 

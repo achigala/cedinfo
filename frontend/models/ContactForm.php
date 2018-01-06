@@ -51,8 +51,8 @@ class ContactForm extends Model
     public function sendEmail($email)
     {
         return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([$this->email => $this->name])
+            ->setFrom(['achigala@gmail.com'=>'CED Infomation'])
+            ->setTo($this->email)
             ->setSubject($this->subject)
             ->setTextBody($this->body)
             ->send();

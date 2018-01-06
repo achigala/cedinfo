@@ -12,6 +12,28 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'sourcePath' => null,
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'js' => [
+                        'js/jquery-3.2.0.min.js',
+                    ],
+                    'jsOptions' => [ 'position' => \yii\web\View::POS_HEAD ],
+                ],
+                // 'yii\bootstrap\BootstrapAsset' => [
+                //     'sourcePath' => null,
+                //     'basePath' => '@webroot',
+                //     'baseUrl' => '@web/../backend/themes/bsb/assets',
+                //     'css' => [
+                //         'bootstrap.css' => 'plugins/bootstrap/css/bootstrap.css'
+                //     ]
+                // ],
+            ],
+        ],
+
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -36,14 +58,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
